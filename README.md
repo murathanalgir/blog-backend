@@ -1,1 +1,1 @@
-# blog-backend
+#Basic Node.js and mongodb backend
