@@ -18,7 +18,7 @@ const authRoutes = require('./routes/authRoutes')
 // ?
 require('dotenv').config()
 const app = express();
-const dbURL = process.env.DBURL
+const dbURL = 'mongodb://localhost';
 mongoose.connect(dbURL, {useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true})
 .then((result) => console.log('db ok'))
 .catch((err) => console.log(err))
@@ -26,7 +26,7 @@ mongoose.connect(dbURL, {useNewUrlParser:true, useUnifiedTopology:true, useCreat
 
 app.set('view engine', 'ejs')
 
-app.listen(3000, ()=>{
+app.listen(3001, ()=>{
     console.log('App ok')
 })
 
