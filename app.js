@@ -1,4 +1,4 @@
-//Consts
+// Packages
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -15,7 +15,7 @@ const authRoutes = require('./routes/authRoutes')
 
 
 
-// ?
+// Database connection
 require('dotenv').config()
 const app = express();
 const dbURL = 'mongodb://localhost:';
@@ -23,7 +23,7 @@ mongoose.connect(dbURL, {useNewUrlParser:true, useUnifiedTopology:true, useCreat
 .then((result) => console.log('db ok'))
 .catch((err) => console.log(err))
 
-
+// Express setting
 app.set('view engine', 'ejs')
 
 app.listen(3001, ()=>{
@@ -35,7 +35,7 @@ app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
 
-
+// Login check
 app.get('*',checkUser)
 app.get('/', (req, res) =>{
     res.redirect('/blog')
